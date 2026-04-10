@@ -1,10 +1,11 @@
 # xp_activate32 MAKEFILE for compiling under MinGW32
 
 # Compiler and tools
-CC       := i686-w64-mingw32-gcc
-CXX      := i686-w64-mingw32-g++
-LD       := i686-w64-mingw32-g++
-RC       := i686-w64-mingw32-windres
+HOST     := i686-w64-mingw32
+CC       := $(HOST)-gcc
+CXX      := $(HOST)-g++
+LD       := $(HOST)-g++
+RC       := $(HOST)-windres
 
 # Targets
 NAME     := xp_activate32
