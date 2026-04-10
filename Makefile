@@ -37,10 +37,10 @@ CFLAGS   := $(DEFINES) -Wall -static -static-libgcc -municode
 
 # Compiler optimization and architecture flags
 ifeq ($(BUILDTYPE), Release)
-CFLAGS   += -O2 -g0 -s -MMD -MP -mfpmath=sse -mfxsr -msse -msse2
+CFLAGS   += -Os -g0 -s -MMD -MP -march=i486
 endif
 ifeq ($(BUILDTYPE), Debug)
-CFLAGS   += -Og -g -MMD -MP -mfpmath=sse -mfxsr -msse -msse2
+CFLAGS   += -Og -g -MMD -MP -march=i486
 endif
 
 # C++ only flags
