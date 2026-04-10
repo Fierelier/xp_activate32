@@ -6,6 +6,7 @@ CC       := $(HOST)-gcc-win32
 CXX      := $(HOST)-g++-win32
 LD       := $(HOST)-g++-win32
 RC       := $(HOST)-windres
+STRIP    := $(HOST)-strip
 
 # Targets
 NAME     := xp_activate32
@@ -38,9 +39,11 @@ CFLAGS   := $(DEFINES) -Wall -static -static-libgcc -municode
 # Compiler optimization and architecture flags
 ifeq ($(BUILDTYPE), Release)
 CFLAGS   += -Os -g0 -s -MMD -MP -march=i486
+STRIP_CM := $(STRIP) $(TARGET)
 endif
 ifeq ($(BUILDTYPE), Debug)
 CFLAGS   += -Og -g -MMD -MP -march=i486
+STRIP_CM := 
 endif
 
 # C++ only flags
@@ -64,6 +67,7 @@ $(NAME): $(TARGET)
 # xp_activate32.exe itself
 $(TARGET): $(OBJ_C) $(OBJ_CPP) $(OBJ_RC)
 	$(LD) $(OBJ_C) $(OBJ_CPP) $(OBJ_RC) -o $(TARGET) $(LDFLAGS)
+	$(STRIP_CM)
 
 # Compilation Rules #
 # Compile C sources
