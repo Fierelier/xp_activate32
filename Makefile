@@ -38,12 +38,25 @@ CFLAGS   := $(DEFINES) -Wall -static -static-libgcc -municode
 
 # Compiler optimization and architecture flags
 ifeq ($(BUILDTYPE), Release)
-CFLAGS   += -Os -g0 -s -MMD -MP -march=i486
+CFLAGS   += -Os -g0 -s -MMD -MP
 STRIP_CM := $(STRIP) $(TARGET)
 endif
 ifeq ($(BUILDTYPE), Debug)
-CFLAGS   += -Og -g -MMD -MP -march=i486
+CFLAGS   += -Og -g -MMD -MP
 STRIP_CM := 
+endif
+
+ifndef PLATFORM
+PLATFORM := x86
+ifneq ($(filter x86_64%,$(HOST)),)
+PLATFORM := x64
+endif
+endif
+
+ifeq ($(PLATFORM), x64)
+CFLAGS   += -march=x86-64
+else
+CFLAGS   += -march=i486
 endif
 
 # C++ only flags
