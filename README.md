@@ -30,7 +30,7 @@ if using MSVS 2017/2019/2022. In an MSVS terminal with `msbuild` in your path, i
 
 ### MinGW
 
-From an MinGW prompt (you may have to edit the `CC`/ `CXX`/ `LD`/ `RC` variables in the [Makefile](./Makefile)):
+From a MinGW prompt (you may have to edit the `HOST` and/or `CC`/ `CXX`/ `LD`/ `RC` variables in the commandline or [Makefile](./Makefile)):
 
 ```bash
   make clean && make all
